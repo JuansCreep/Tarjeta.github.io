@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: skyblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .botones {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #E0E0E0; /* Cambia el color de fondo a un gris suave */
+            color: black;
+            border: none;
+            padding: 15px 27px; /* Aumenta el tamaño del padding en un 10% */
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            font-size: 110%; /* Aumenta el tamaño de la fuente en un 10% */
+        }
+        .posicion1 {
+            top: 100px; /* Ajuste para mover el botón "Sí" un 30% más abajo */
+            right: 60px;
+        }
+        .posicion2 {
+            bottom: -100px; /* Ajuste para mover el botón "No" un 30% más abajo */
+            left: 85px;
+        }
+        .posicion3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .posicion5 {
+            bottom: 175px;
+            right: 50px;
+        }
+        .posicion6 {
+            top: 200px;
+            left: 200px;
+        }
+        .posicion4{
+            top: -244px;
+            right:422px;
+        }
+        .imagen-container {
+            position: absolute;
+            top: 8%; /* Ajuste para posicionar la imagen un 8% más arriba */
+        }
+        .imagen {
+            width: 250px; /* Ancho de la imagen */
+            height: auto; /* Altura ajustada automáticamente */
+        }
+        .soldado {
+            width: 750px; /* Nuevo tamaño de la imagen del soldado */
+            height: 300px;
+            top: 10px; /* Nueva posición vertical de la imagen del soldado */
+            left: 1px; /* Nueva posición horizontal de la imagen del soldado */
+        }
+        .mensaje {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            margin-top: 220px; /* Espacio entre la imagen y el mensaje */
+            font-size: 188%; /* Aumenta el tamaño del texto en un 30% */
+            font-style: italic; /* Establece el estilo del texto en cursiva */
+        }
+        .mensaje-patria {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 80px; /* Espacio entre la imagen y el mensaje */
+            font-size: 245%; /* Aumenta el tamaño del texto en un 30% */
+        }
+        .oso-container {
+            position: absolute;
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra horizontalmente */
+            transform: translate(-50%, -50%); /* Centra la imagen */
+        }
+        .oso {
+            width: 300px; /* Ancho deseado */
+            height: auto; /* Altura ajustada automáticamente */
+        }
+        .mensaje-oso {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 200%;
+            text-align: center;
+            margin-top: 400px; /* Espacio superior */
+        }
+        .mensaje-carta {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 300%;
+            margin-top: 390px; /* Espacio superior */
+        }
+        .carta {
+            width: 400px; /* Ancho deseado */
+            height: auto; /* Altura ajustada automáticamente */
+            position: absolute;
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra horizontalmente */
+            transform: translate(-50%, -50%); /* Centra la imagen */
+        }
+        .full-screen-video {
+            width: 100vw;
+            height: 90vh;
+            object-fit: cover;
+        }
+        .full-screen-video-gusto {
+            width: 100vw;
+            height: 90vh;
+            object-fit: cover;
+        }
+        .full-screen-video-final {
+            width: 100vw;
+            height: 90vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="imagen-container">
+        <img class="imagen" src="Escudo Ejercito.jpg.png" alt="Imagen">
+    </div>
+    <div class="mensaje">
+        QUIERES QUE TU NOVIO PAGUE SERVICIO MILITAR?
+    </div>
+    <div class="botones">
+        <button class="posicion1" id="botonSi" onclick="mostrarSoldado()">Sí</button>
+        <button class="posicion2" id="botonNo" onclick="rechazarSoldado()">No</button>
+    </div>
+
+    <script>
+        const clasesPosiciones = ['posicion1', 'posicion2', 'posicion3','posicion4', 'posicion5', 'posicion6'];
+        let posicionActual = 'posicion3'; // Posición inicial
+
+        function mostrarSoldado() {
+            const imagenContainer = document.querySelector('.imagen-container');
+            const mensaje = document.querySelector('.mensaje');
+            const botones = document.querySelector('.botones');
+            const botonSi = document.getElementById('botonSi');
+            
+            // Eliminar la imagen y el mensaje existentes
+            imagenContainer.innerHTML = '';
+            mensaje.innerHTML = '';
+            
+            // Crear y agregar la imagen del soldado
+            const soldadoImg = document.createElement('img');
+            soldadoImg.src = 'Soldado.jpg'; // Reemplaza 'soldado.jpg' con la ruta de la imagen del soldado
+            soldadoImg.alt = 'Soldado';
+            soldadoImg.classList.add('imagen', 'soldado'); // Agrega las clases 'imagen' y 'soldado
+            imagenContainer.appendChild(soldadoImg);
+            
+            // Agregar el mensaje debajo de la imagen del soldado
+            const mensajePatria = document.createElement('div');
+            mensajePatria.classList.add('mensaje-patria');
+            mensajePatria.innerText = 'TU PATRIA AGRADECE TU APROBACION';
+            imagenContainer.appendChild(mensajePatria);
+            
+            // Ocultar los botones
+            botones.style.display = 'none';
+
+            // Programar la acción de cambio de imagen después de 3 segundos
+            setTimeout(() => {
+                // Eliminar la imagen y el mensaje existentes
+                imagenContainer.innerHTML = '';
+                mensaje.innerHTML = '';
+
+                // Crear y agregar la imagen del corazón
+                const corazonImg = document.createElement('img');
+                corazonImg.src = 'OSO_CORAZON.png'; // Reemplaza 'OSO_CORAZON.png' con la ruta de la imagen del corazón
+                corazonImg.alt = 'Corazón';
+                corazonImg.classList.add('imagen', 'oso'); // Agrega las clases 'imagen' y 'oso'
+                const osoContainer = document.createElement('div'); // Crea un contenedor para la imagen del oso
+                osoContainer.classList.add('oso-container'); // Agrega la clase 'oso-container'
+                osoContainer.appendChild(corazonImg); // Agrega la imagen del corazón al contenedor
+                imagenContainer.appendChild(osoContainer); // Agrega el contenedor al contenedor de imágenes
+
+                // Agregar el mensaje del oso
+                const mensajeOso = document.createElement('div');
+                mensajeOso.classList.add('mensaje-oso');
+                mensajeOso.innerText = 'MENTIRA, NO ME IRE A NINGUNA PARTE,ME QUEDARE CONTIGO.\n I LOVE YOU';
+                imagenContainer.appendChild(mensajeOso);
+
+                // Programar la acción de cambio de imagen después de 3 segundos
+                setTimeout(() => {
+                    // Eliminar la imagen y el mensaje del oso
+                    imagenContainer.innerHTML = '';
+                    mensajeOso.innerHTML = '';
+
+                    // Crear y agregar la imagen de la carta sorpresa
+                    const cartaImg = document.createElement('img');
+                    cartaImg.src = 'CARTA_SORPRESA.png'; // Reemplaza 'CARTA_SORPRESA.jpg' con la ruta de la imagen de la carta sorpresa
+                    cartaImg.alt = 'Carta Sorpresa';
+                    cartaImg.classList.add('imagen', 'carta'); // Agrega las clases 'imagen' y 'carta'
+                    cartaImg.addEventListener('click', reproducirVideo); // Agrega un evento de clic a la imagen de la carta
+                    imagenContainer.appendChild(cartaImg);
+
+                    // Agregar el mensaje debajo de la imagen de la carta
+                    const mensajeCarta = document.createElement('div');
+                    mensajeCarta.classList.add('mensaje-carta');
+                    mensajeCarta.innerText = 'PRESIONA LA CARTA';
+                    imagenContainer.appendChild(mensajeCarta);
+                }, 3000); // 3000 milisegundos = 3 segundos
+            }, 3000); // 3000 milisegundos = 3 segundos
+        }
+
+        function reproducirVideo() {
+            const imagenContainer = document.querySelector('.imagen-container');
+            imagenContainer.innerHTML = ''; // Eliminar la imagen de la carta y el mensaje
+
+            // Crear y agregar el elemento de video
+            const video = document.createElement('video');
+            video.src = 'TERROR.mp4'; // Reemplaza 'tu_video.mp4' con la ruta de tu video
+            video.autoplay = true; // Iniciar la reproducción automáticamente
+            video.loop = false; // No reproducir en bucle
+            video.muted = false; // Permitir sonido
+            video.classList.add('full-screen-video'); // Agregar clase para tamaño de pantalla completa
+            video.addEventListener('ended', () => {
+                setTimeout(reproducirVideoGusto, 1700); // Espera 1.7 segundos antes de reproducir el video "Gusto"
+            }); // Agregar evento para reproducir video "Gusto" al finalizar
+            imagenContainer.appendChild(video);
+        }
+
+        function reproducirVideoGusto() {
+            const imagenContainer = document.querySelector('.imagen-container');
+            imagenContainer.innerHTML = ''; // Eliminar el video "Terror"
+
+            // Crear y agregar el elemento de video "Gusto"
+            const videoGusto = document.createElement('video');
+            videoGusto.src = 'GUSTO.mp4'; // Reemplaza 'GUSTO.mp4' con la ruta de tu video "Gusto"
+            videoGusto.autoplay = true; // Iniciar la reproducción automáticamente
+            videoGusto.loop = false; // No reproducir en bucle
+            videoGusto.muted = false; // Permitir sonido
+            videoGusto.classList.add('full-screen-video-gusto'); // Agregar clase para tamaño de pantalla completa
+            videoGusto.addEventListener('ended', () => {
+                setTimeout(reproducirVideoFinal, 1700); // Espera 1.7 segundos antes de reproducir el video "ESO ES TODO"
+            }); // Agregar evento para reproducir video "ESO ES TODO" al finalizar
+            imagenContainer.appendChild(videoGusto);
+        }
+        
+        function reproducirVideoFinal() {
+            const imagenContainer = document.querySelector('.imagen-container');
+            imagenContainer.innerHTML = ''; // Eliminar el video "Gusto"
+
+            // Crear y agregar el elemento de video "ESO ES TODO"
+            const videoFinal = document.createElement('video');
+            videoFinal.src = 'ESO_ES_TODO.mp4'; // Reemplaza 'ESO_ES_TODO.mp4' con la ruta de tu video "ESO ES TODO"
+            videoFinal.autoplay = true; // Iniciar la reproducción automáticamente
+            videoFinal.loop = false; // No reproducir en bucle
+            videoFinal.muted = false; // Permitir sonido
+            videoFinal.classList.add('full-screen-video-final'); // Agregar clase para tamaño de pantalla completa
+            imagenContainer.appendChild(videoFinal);
+        }
+        
+        function rechazarSoldado() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * clasesPosiciones.length);
+            } while (clasesPosiciones[randomIndex] === posicionActual); // Evitar la misma posición
+
+            const botonNo = document.getElementById('botonNo');
+            botonNo.className = clasesPosiciones[randomIndex];
+            posicionActual = clasesPosiciones[randomIndex]; // Actualizar la posición actual
+            
+            // Aquí puedes agregar la funcionalidad para el botón "No" si es necesario
+            console.log("Soldado rechazado");
+        }
+    </script>
+</body>
+</html>
